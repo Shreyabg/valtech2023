@@ -1,3 +1,7 @@
 Hello World!
 
+<<<<<<< HEAD
 I am there...
+=======
+how are you....
+>>>>>>> f1f09109bd0b49dc7a964dc82ec900042fd0e4a4
