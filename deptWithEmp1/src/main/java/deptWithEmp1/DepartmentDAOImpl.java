@@ -12,7 +12,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public int firstDept() throws SQLException {
 		Connection conn = getConnection();
-		PreparedStatement ps = conn.prepareStatement("SELECT MIN(DEPID) FROM DEPARTMENT");
+		PreparedStatement ps = conn.prepareStatement("SELECT MIN(DEPTID) FROM DEPARTMENT");
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
 			int id = rs.getInt(1);
@@ -25,7 +25,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public int lastDept() throws SQLException {
 		Connection conn = getConnection();
-		PreparedStatement ps = conn.prepareStatement("SELECT MAX(DEPID) FROM DEPARTMENT");
+		PreparedStatement ps = conn.prepareStatement("SELECT MAX(DEPTID) FROM DEPARTMENT");
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
 			int deptId = rs.getInt(1);
@@ -39,7 +39,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public int nextDept(int deptId) throws SQLException {
 		Connection conn = getConnection();
-		PreparedStatement ps = conn.prepareStatement("SELECT MIN(DEPID) FROM DEPARTMENT WHERE DEPTID > ?");
+		PreparedStatement ps = conn.prepareStatement("SELECT MIN(DEPTID) FROM DEPARTMENT WHERE DEPTID > ?");
 		ps.setInt(1, deptId);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
@@ -53,7 +53,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public int previousDept(int deptId) throws SQLException {
 		Connection conn = getConnection();
-		PreparedStatement ps = conn.prepareStatement("SELECT MAX(DEPID) FROM DEPARTMENT WHERE DEPTID < ?");
+		PreparedStatement ps = conn.prepareStatement("SELECT MAX(DEPTID) FROM DEPARTMENT WHERE DEPTID < ?");
 		ps.setInt(1, deptId);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
@@ -68,7 +68,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public void createDepartment(DepartmentD dept) throws SQLException {
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("INSERT INTO DEPARTMENT (DEPID,DEPTNAME,DEPTLOC) VALUES(?,?,?)");
+		PreparedStatement ps=con.prepareStatement("INSERT INTO DEPARTMENT (DEPTID,DEPTNAME,DEPTLOC) VALUES(?,?,?)");
 		populatePreparedStatment(dept, ps);
 		int rowsUpdated=ps.executeUpdate();
 		System.out.println("Rows update:"+rowsUpdated);
@@ -93,7 +93,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public void updateDepartment(DepartmentD dept) throws SQLException {
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("UPDATE DEPARTMENT SET DEPID=?,DEPTNAME=?,DEPTLOC=? WHERE DEPID=? ");
+		PreparedStatement ps=con.prepareStatement("UPDATE DEPARTMENT SET DEPTID=?,DEPTNAME=?,DEPTLOC=? WHERE DEPTID=? ");
 		populatePreparedStatment(dept, ps);
 		ps.setInt(4, dept.getDeptId());
 		int rowsUpdated=ps.executeUpdate();
@@ -105,7 +105,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public void deleteDepartment(int id) throws SQLException {
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("DELETE FROM DEPARTMENT WHERE DEPID=?");
+		PreparedStatement ps=con.prepareStatement("DELETE FROM DEPARTMENT WHERE DEPTID=?");
 		ps.setInt(1, id);
 		int rowsUpdated=ps.executeUpdate();
 		System.out.println("Rows update:"+rowsUpdated);
@@ -115,7 +115,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 	@Override
 	public DepartmentD getDepartment(int id) throws SQLException {
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("SELECT * FROM DEPARTMENT WHERE DEPID=?");
+		PreparedStatement ps=con.prepareStatement("SELECT * FROM DEPARTMENT WHERE DEPTID=?");
 		ps.setInt(1, id);
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()) {
@@ -124,7 +124,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
 			return dept;
 		}
 		else {
-			System.out.println("No DepId found "+id+" ,Couldn't fetch data");
+			System.out.println("No DeptId found "+id+" ,Couldn't fetch data");
 			return null;
 		}
 	}
