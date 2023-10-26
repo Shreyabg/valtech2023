@@ -12,7 +12,13 @@ public class SimpleInterestImpl implements SimpleInterest{
 	public double computInterest(int prin, int roi, int duration) {
 		int result=arithmetic.mul(prin, roi);
 		result=arithmetic.mul(result,duration);// ptr/100
-		return arithmetic.div(result, 100);
+		try {
+			return arithmetic.div(result, 100);
+		} catch (DivideByZeroException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 	public static void main(String[] args) {
 		Arithmetic arithmetic=new ArithmeticImpl();
