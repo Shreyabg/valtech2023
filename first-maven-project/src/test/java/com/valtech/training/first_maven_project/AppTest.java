@@ -15,6 +15,13 @@ public class AppTest
      *
      * @param testName name of the test case
      */
+	
+	
+	public void testsayHello() {
+		
+		App app=new App();
+		assertEquals("Hello World", app.sayHello());
+	}
     public AppTest( String testName )
     {
         super( testName );
