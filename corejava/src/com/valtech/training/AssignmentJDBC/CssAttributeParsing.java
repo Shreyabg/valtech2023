@@ -65,9 +65,9 @@ public class CssAttributeParsing {
         while (matcher.find()) {
             String hexColor = matcher.group();
             String rgbColor = hexToRgb(hexColor);
-            attribute = attribute.replace(hexColor, rgbColor);
+           attribute = attribute.replace(hexColor, rgbColor);
         }
-
+    System.out.println();
         return attribute;
     }
 
@@ -75,6 +75,7 @@ public class CssAttributeParsing {
         int r = Integer.parseInt(hex.substring(1, 3), 16);
         int g = Integer.parseInt(hex.substring(3, 5), 16);
         int b = Integer.parseInt(hex.substring(5, 7), 16);
+        System.out.println(hex +" " + "rgb(" + r + ", " + g + ", " + b + ")" );
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
 

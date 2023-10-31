@@ -46,7 +46,7 @@ public class CatchyNumberSelector {
         if (number.equals(reversed.toString())) {
             score += 10; // Give the highest score for a palindrome.
         }
-
+    System.out.println(number +""+ score);
         return score;
     }
 
