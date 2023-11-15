@@ -123,14 +123,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		EmployeeDAO dao = new EmployeeDAOImpl();
 //		System.out.println(dao.getEmployee(1));
 //		System.out.println(dao.getEmployee(2));
-		// dao.createEmployee(new Employee("Xyz",35,12,3,75000));
+		 dao.createEmployee(new Employee("Xyz",35,12,3,75000));
 //		Employee e=dao.getEmployee(3);
 //		e.setSeniority(5);
 //		dao.updateEmployee(e);
 //		dao.deleteEmployee(3);
-		dao.count();
-		System.out.println(dao.getAllEmployees());
-		System.out.println(dao.count());
+//		dao.count();
+//		System.out.println(dao.getAllEmployees());
+//		System.out.println(dao.count());
 
 	}
 

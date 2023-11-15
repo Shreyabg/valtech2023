@@ -42,6 +42,7 @@ class ArithmeticTest {
 	}
 	
 	
+	
 	@BeforeEach
 	void anything() {
 		System.out.println("init...");
@@ -89,9 +90,6 @@ class ArithmeticTest {
 	}
 	
 	
-	
-	
-	
 	@ParameterizedTest(name="Add with CSV  File{0} +{1}={2}")
 	@CsvFileSource(files = {"add.csv"}
 	)
@@ -102,13 +100,7 @@ class ArithmeticTest {
 	
 	
 	
-	@ParameterizedTest(name="Add with CSV {0} +{1}={2}")
-	@CsvSource(value={"2,3,5","-2,3,1","5,-2,3","-1,-1,-2"})
-	void testWithCSVParams(int a,int b,int c) {
-		assertEquals(c, arithmetic.add(a, b));
-	}
-	
-	
+
 	//allow us to pass arguments //also need to give values for it//@ValueSource allow us to pass any type of array like byte array etc
 	@ParameterizedTest(name="Add with {0}") 
 	@ValueSource(strings= {"2,3,5","-2,3,1","5,-2,3","-1,-1,-2"})
