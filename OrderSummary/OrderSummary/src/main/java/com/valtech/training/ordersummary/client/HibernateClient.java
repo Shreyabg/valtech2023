@@ -29,7 +29,7 @@ public class HibernateClient {
 		Session session1 = sesFac.openSession();
 		Transaction tx1 = session1.beginTransaction();
 		
-//		session1.persist(new Customer("Akhil", "701/Tower 2, Harmony Apartments, Nirvana Country, Gurgaon", "9910369104"));
+//		session1.persist(new Customer(""Shreya", "banglore", "9910369104"));
 		Customer customer1 = new Customer("Shreya", "banglore", "9910369104");
 		Orders order1 = new Orders(dateformat.parse("01-01-2001-01-01-01"));
 		Items item1 = new Items("iPhone 15", 79999);
