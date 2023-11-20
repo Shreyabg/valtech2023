@@ -15,7 +15,7 @@ public class OrderModel {
 	private String item;
 	private String description;
 	private int itemCounter;
-
+	private String orderDate;
 	
 	
 	public OrderModel() {
@@ -77,6 +77,6 @@ public class OrderModel {
 		this.orderDate = orderDate;
 	}
 
-	private String orderDate;
+
 
 }

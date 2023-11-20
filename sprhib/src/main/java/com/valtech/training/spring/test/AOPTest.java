@@ -1,3 +1,4 @@
+
 package com.valtech.training.spring.test;
 
 import static org.junit.jupiter.api.Assertions.*;

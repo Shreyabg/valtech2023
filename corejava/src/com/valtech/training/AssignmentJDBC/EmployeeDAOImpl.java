@@ -162,7 +162,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public List<Employee> getEmployeesByLocation(String location) throws SQLException {
 	    // Assuming the location is associated with the department
 	    Connection conn = getConnection();
-	    PreparedStatement ps = conn.prepareStatement("SELECT E.ID, E.NAME, E.AGE, E.EXPERIENCE, E.SENIORITY, E.SALARY,E.DEPID FROM EMPLOYEE E INNER JOIN DEPARTMENT D ON E.DEPID = D.DEPID WHERE D.LOCATION = ?");
+	    PreparedStatement ps = conn.prepareStatement("SELECT E.ID, E.NAME, E.AGE, E.EXPERIENCE, E.SENIORITY, E.SALARY,E.DEPID,D.depName FROM EMPLOYEE E INNER JOIN DEPARTMENT D ON E.DEPID = D.DEPID WHERE D.LOCATION = ?");
 	    ps.setString(1, location);
 	    ResultSet rs = ps.executeQuery();
 	    List<Employee> employees = new ArrayList<>();

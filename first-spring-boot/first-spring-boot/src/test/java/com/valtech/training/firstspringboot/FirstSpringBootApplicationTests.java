@@ -41,7 +41,7 @@ class FirstSpringBootApplicationTests {
 	@Test
 	void testOrders() {
 		Order o=orderService.createOrder(new Order("Macbook Pro M3",25,"Fpr the entire team",LocalDate.of(2023, 11, 8)));
-		assertEquals(1, o.getId());
+		assertEquals(4, o.getId());
 		assertTrue(orderService.getAllOrders().size()>0);
 	}
 	

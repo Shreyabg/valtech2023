@@ -29,14 +29,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public class EmployeeRowMapper implements RowMapper<Employee> {
 
-		
-
 		@Override
 		public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-			//"SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE"
-			
-			Employee e=new Employee();
+			// "SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE"
+
+			Employee e = new Employee();
 			e.setId(rs.getInt(1));
 			e.setName(rs.getString(2));
 			e.setAge(rs.getInt(3));
@@ -44,15 +42,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			e.setSeniority(rs.getInt(5));
 			e.setSalary(rs.getInt(6));
 			return e;
-			
+
 		}
 
 	}
 
 	@Autowired
 	private DataSource dataSource;
-	
-	
+
 	@Override
 	public long count() {
 		String countQry = "SELECT COUNT(ID) FROM EMPLOYEE";
@@ -61,23 +58,23 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public void deleteEmployee(int id) {
-		String deleteQry="DELETE FROM EMPLOYEE WHERE ID=?";
-		new JdbcTemplate(dataSource).update(deleteQry,id);
+		String deleteQry = "DELETE FROM EMPLOYEE WHERE ID=?";
+		new JdbcTemplate(dataSource).update(deleteQry, id);
 	}
 
 	@Override
 	public void updateEmployee(Employee emp) {
-		String updateQry="UPDATE EMPLOYEE SET NAME =?,AGE=?,EXPERIENCE=?,SENIORITY=?,SALARY=? WHERE ID=?";
-		new JdbcTemplate(dataSource).update(updateQry,emp.getName(),emp.getAge(),emp.getExperience(),emp.getSeniority(),emp.getSalary(),emp.getId());
+		String updateQry = "UPDATE EMPLOYEE SET NAME =?,AGE=?,EXPERIENCE=?,SENIORITY=?,SALARY=? WHERE ID=?";
+		new JdbcTemplate(dataSource).update(updateQry, emp.getName(), emp.getAge(), emp.getExperience(),
+				emp.getSeniority(), emp.getSalary(), emp.getId());
 	}
 
 	@Override
-	public void createEmployee(Employee emp){
-		String createQry="INSERT INTO EMPLOYEE(NAME,AGE,EXPERIENCE,SENIORITY,SALARY) values(?,?,?,?,?)";
-		new JdbcTemplate(dataSource).update(createQry,emp.getName(),emp.getAge(),emp.getExperience(),emp.getSeniority(),emp.getSalary());
+	public void createEmployee(Employee emp) {
+		String createQry = "INSERT INTO EMPLOYEE(NAME,AGE,EXPERIENCE,SENIORITY,SALARY) values(?,?,?,?,?)";
+		new JdbcTemplate(dataSource).update(createQry, emp.getName(), emp.getAge(), emp.getExperience(),
+				emp.getSeniority(), emp.getSalary());
 	}
-
-	
 
 	@Override
 	public void saveEmployee(Employee emp) {
@@ -86,16 +83,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		String selectAllQry="SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE";
-		
-		return new JdbcTemplate(dataSource).query(selectAllQry,new EmployeeRowMapper());
+		String selectAllQry = "SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE";
+
+		return new JdbcTemplate(dataSource).query(selectAllQry, new EmployeeRowMapper());
 
 	}
 
 	@Override
 	public Employee getEmployee(int id) {
-		String selectQry="SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE WHERE ID=?" +id;
-		return new JdbcTemplate(dataSource).queryForObject(selectQry,new EmployeeRowMapper());
+		String selectQry = "SELECT ID,NAME,AGE,EXPERIENCE,SENIORITY,SALARY FROM EMPLOYEE WHERE ID=?" + id;
+		return new JdbcTemplate(dataSource).queryForObject(selectQry, new EmployeeRowMapper());
 
 	}
 
@@ -122,9 +119,5 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 //		return DriverManager.getConnection("jdbc:mysql://localhost:3306/valtech2023?useSSL=false", "root", "root");
 //		// ?useSSL=Secure Software layer .This is for latest version
 //	}
-
-	
-
-	
 
 }

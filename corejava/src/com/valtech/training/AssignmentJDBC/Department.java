@@ -6,7 +6,7 @@ public class Department {
 	private String location;
 	
 	public String toString() {
-		return "Employee [id=" + depId + ", name=" + depName + ", location=" + location +"]";
+		return "Department [id=" + depId + ", name=" + depName + ", location=" + location +"]";
 	}
 	public Department(String name, String location) {
 		super();

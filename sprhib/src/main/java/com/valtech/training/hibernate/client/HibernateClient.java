@@ -57,36 +57,36 @@ public class HibernateClient {
 		BankAccount ba=(BankAccount)ses.load(BankAccount.class,id);
 		
 		
+//
+		Customer cus = new Customer("Abc", 23);
+		ses.save(cus);
+		Address add = new Address("JP Nagar", "Blr", 560078);
+		add.setCustomer(cus);
+		cus.setAddress(add);
+		ses.save(add);
+//
+		Account acc = new Account(1000, "SB");
+		Tx tx1 = new Tx(1000);
+		Tx tx2 = new ChequeTx(2000, 123123, 34435);
+		Tx tx3 = new TellerTx(3000, 123, 345);
+		Tx tx4 = new AtmTx(5000, 789);
 
-//		Customer cus = new Customer("Abc", 23);
-//		ses.save(cus);
-//		Address add = new Address("JP Nagar", "Blr", 560078);
-//		add.setCustomer(cus);
-//		cus.setAddress(add);
-//		ses.save(add);
-////
-//		Account acc = new Account(1000, "SB");
-//		Tx tx1 = new Tx(1000);
-//		Tx tx2 = new ChequeTx(2000, 123123, 34435);
-//		Tx tx3 = new TellerTx(3000, 123, 345);
-//		Tx tx4 = new AtmTx(5000, 789);
-//
-//		Account acc1 = new Account(20000, "CA");
-//		Tx tx5 = new ChequeTx(2000, 456233, 345124);
-//
+		Account acc1 = new Account(20000, "CA");
+		Tx tx5 = new ChequeTx(2000, 456233, 345124);
+
 //		Customer cus1 = new Customer("Def", 25);
 //		Customer cus2 = new Customer("Pqr", 27);
 //		Address add1 = new Address("jayanagar", "Blr", 5600070);
 //		Address add2 = new Address("Gandhinagar", "hyd", 560055);
 ////
-//		ses.persist(acc);
-//		ses.persist(tx1);
-//		ses.persist(tx2);
-//		ses.persist(tx3);
-//		ses.persist(tx4);
+		ses.persist(acc);
+		ses.persist(tx1);
+		ses.persist(tx2);
+		ses.persist(tx3);
+		ses.persist(tx4);
 //
-//		ses.persist(acc1);
-//		ses.persist(tx5);
+		ses.persist(acc1);
+		ses.persist(tx5);
 //		ses.persist(cus1);
 //		ses.persist(cus2);
 //		ses.persist(add1);
@@ -122,14 +122,14 @@ public class HibernateClient {
 		
 		
 		//Query query=ses.createQuery("Select t from Tx t join t.account.customers c where c.address.city= ? and t.amount > ?");
-		
+//		
 		Query query=ses.getNamedQuery("Tx.findAllByCityAndAmountGreaterThan");
 		query.setString(0, "Blr");
 		query.setFloat(1, 3000);
 		query.list().forEach(t -> System.out.println(t));
 		
 		
-		
+		//
 		//ses.createQuery("Select distinct tx from Tx tx").list().forEach(t -> System.out.println(t));
 		//ses.createQuery("Select distinct tx.account from Tx tx").list().forEach(t -> System.out.println(t));
 		//ses.createQuery("Select tx.account from Tx tx").list().forEach(t -> System.out.println(t));
@@ -145,7 +145,7 @@ public class HibernateClient {
 //		//e.setName("Abc");
 //		//ses.merge(e);
 //		e.setName("Abc1");
-
+//
 		System.out.println("loading..");
 		tx.commit();
 		ses.close();
